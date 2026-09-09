@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>__USER_NAME__ - Subscriber Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/itsyebekhe/nahan@main/tailwindcss.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        fa: ['Vazirmatn', 'sans-serif'],
+                        en: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: {
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f2937',
+                        },
+                        brand: {
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --bg-primary: #f3f4f6;
+            --bg-card: #ffffff;
+            --bg-card-inner: #f9fafb;
+            --bg-input: #f3f4f6;
+            --border-card: #e5e7eb;
+            --border-inner: #e5e7eb;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-muted: #9ca3af;
+            --accent: #6366f1;
+            --accent-light: #e0e7ff;
+            --accent-border: #c7d2fe;
+            --accent-hover: #4f46e5;
+            --green-bg: #d1fae5;
+            --green-border: #a7f3d0;
+            --green-text: #059669;
+            --amber-bg: #fef3c7;
+            --amber-border: #fde68a;
+            --amber-text: #d97706;
+            --red-bg: #fee2e2;
+            --red-border: #fecaca;
+            --red-text: #dc2626;
+            --progress-bg: #e5e7eb;
+            --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.025);
+            --btn-primary-bg: #6366f1;
+            --btn-primary-hover: #4f46e5;
+            --btn-secondary-bg: #f3f4f6;
+            --btn-secondary-hover: #e5e7eb;
+            --modal-bg: rgba(0,0,0,0.5);
+            --modal-card: #ffffff;
+        }
+
+        .dark {
+            --bg-primary: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --bg-card-inner: rgba(31, 41, 55, 0.5);
+            --bg-input: #111827;
+            --border-card: rgba(99, 102, 241, 0.15);
+            --border-inner: rgba(99, 102, 241, 0.1);
+            --text-primary: #f9fafb;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent: #818cf8;
+            --accent-light: rgba(99, 102, 241, 0.15);
+            --accent-border: rgba(99, 102, 241, 0.3);
+            --accent-hover: #6366f1;
+            --green-bg: rgba(16, 185, 129, 0.1);
+            --green-border: rgba(16, 185, 129, 0.2);
+            --green-text: #34d399;
+            --amber-bg: rgba(245, 158, 11, 0.1);
+            --amber-border: rgba(245, 158, 11, 0.2);
+            --amber-text: #fbbf24;
+            --red-bg: rgba(239, 68, 68, 0.1);
+            --red-border: rgba(239, 68, 68, 0.2);
+            --red-text: #f87171;
+            --progress-bg: rgba(31, 41, 55, 0.8);
+            --shadow-card: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            --btn-primary-bg: #6366f1;
+            --btn-primary-hover: #4f46e5;
+            --btn-secondary-bg: rgba(31, 41, 55, 0.6);
+            --btn-secondary-hover: rgba(55, 65, 81, 0.8);
+            --modal-bg: rgba(0,0,0,0.8);
+            --modal-card: #1f2937;
+        }
+
+        body {
+            font-family: 'Inter', 'Vazirmatn', sans-serif;
+            background: var(--bg-primary) !important;
+            color: var(--text-primary);
+            transition: background 0.3s, color 0.3s;
+            -webkit-font-smoothing: antialiased;
+        }
+        [lang="fa"] body { font-family: 'Vazirmatn', sans-serif; }
+        
+        .bento-card {
+            background: var(--bg-card) !important;
+            border: 1px solid var(--border-card) !important;
+            box-shadow: var(--shadow-card) !important;
+            border-radius: 1.5rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        
+        .bento-inner {
+            background: var(--bg-card-inner);
+            border: 1px solid var(--border-inner);
+            border-radius: 1rem;
+            transition: all 0.3s;
+        }
+
+        .input-field {
+            background: var(--bg-input);
+            border: 1px solid var(--border-inner);
+            color: var(--text-primary);
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+        
+        .btn-primary { background: var(--btn-primary-bg); color: white; transition: all 0.2s ease; }
+        .btn-primary:hover { background: var(--btn-primary-hover); transform: translateY(-1px); }
+        .btn-secondary { background: var(--btn-secondary-bg); color: var(--text-primary); border: 1px solid var(--border-inner); transition: all 0.2s ease; }
+        .btn-secondary:hover { background: var(--btn-secondary-hover); transform: translateY(-1px); }
+        .text-secondary { color: var(--text-secondary); }
+        .text-muted { color: var(--text-muted); }
+        .progress-bar-bg { background: var(--progress-bg); }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.4s ease-out; }
+        
+        .modal-overlay { background: var(--modal-bg); backdrop-filter: blur(8px); }
+        .modal-card { background: var(--modal-card); border: 1px solid var(--border-card); }
+        
+        .app-btn {
+            background: var(--bg-card-inner);
+            border: 1px solid var(--border-inner);
+            color: var(--text-primary);
+            transition: all 0.2s ease;
+        }
+        .app-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+        
+
+        .user-initial-logo {
+            width: 92px;
+            height: 92px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            position: relative;
+            background: linear-gradient(145deg, #1d4ed8 0%, #60a5fa 30%, #dbeafe 52%, #ffffff 70%, #93c5fd 84%, #2563eb 100%);
+            box-shadow: 0 8px 28px rgba(37, 99, 235, 0.28), inset 0 1px 2px rgba(255,255,255,.85);
+            padding: 3px;
+        }
+        .user-initial-logo::before {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: var(--bg-card);
+        }
+        .user-profile-image {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+        @keyframes zavaliProfilePulse {
+            0%,100% { transform: scale(1); filter: saturate(1) drop-shadow(0 8px 20px rgba(15,23,42,.24)); }
+            50% { transform: scale(1.018); filter: saturate(1.08) drop-shadow(0 10px 26px rgba(37,99,235,.32)); }
+        }
+        .user-profile-image { animation: zavaliProfilePulse 3.2s ease-in-out infinite; }
+
+
+        .user-initial-letter {
+            position: relative;
+            z-index: 1;
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            font-size: 42px;
+            line-height: 1;
+            font-weight: 900;
+            background: linear-gradient(135deg, #1d4ed8 0%, #60a5fa 38%, #bfdbfe 58%, #ffffff 72%, #2563eb 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            filter: drop-shadow(0 2px 2px rgba(0,0,0,.12));
+        }
+\n        .glow-effect {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+        }
+    </style>
+
+    <!-- Responsive fallback styles: keeps the panel usable if Tailwind CDN is blocked/unavailable. -->
+    <style id="responsive-fallback">
+        *, *::before, *::after { box-sizing: border-box; }
+        html, body { width: 100%; min-width: 0; margin: 0; }
+        body { min-height: 100vh; width: 100%; overflow-x: hidden; }
+
+        /* Main page containers */
+        body > .w-full.max-w-6xl { width: 100%; max-width: 72rem; }
+        body > .w-full.max-w-6xl[class*="grid-cols-1"][class*="md:grid-cols-12"] {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        /* Tailwind-free fallbacks for the most important layout utilities. */
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .justify-end { justify-content: flex-end; }
+        .w-full { width: 100%; }
+        .max-w-6xl { max-width: 72rem; }
+        .relative { position: relative; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: minmax(0, 1fr); }
+        .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        .col-span-full { grid-column: 1 / -1; }
+        .gap-2 { gap: .5rem; } .gap-3 { gap: .75rem; } .gap-4 { gap: 1rem; } .gap-6 { gap: 1.5rem; }
+        .p-2 { padding: .5rem; } .p-3 { padding: .75rem; } .p-4 { padding: 1rem; }
+        .p-5 { padding: 1.25rem; } .p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .px-5 { padding-left: 1.25rem; padding-right: 1.25rem; }
+        .px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .py-2 { padding-top: .5rem; padding-bottom: .5rem; }
+        .py-2\.5 { padding-top: .625rem; padding-bottom: .625rem; }
+        .py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+        .mb-2 { margin-bottom: .5rem; } .mb-4 { margin-bottom: 1rem; } .mb-5 { margin-bottom: 1.25rem; }
+        .mb-6 { margin-bottom: 1.5rem; } .mt-6 { margin-top: 1.5rem; } .mt-8 { margin-top: 2rem; }
+        .block { display: block; } .hidden { display: none; }
+        .text-center { text-align: center; }
+        .text-left { text-align: left; }
+        .font-bold { font-weight: 700; } .font-black { font-weight: 900; }
+        .text-xs { font-size: .75rem; line-height: 1rem; }
+        .text-sm { font-size: .875rem; line-height: 1.25rem; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+        .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        .rounded-xl { border-radius: .75rem; } .rounded-2xl { border-radius: 1rem; } .rounded-3xl { border-radius: 1.5rem; }
+        .overflow-hidden { overflow: hidden; }
+        .z-10 { z-index: 10; }
+        .shrink-0 { flex-shrink: 0; }
+        .flex-1 { flex: 1 1 0%; min-width: 0; }
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+        input, button, a { max-width: 100%; }
+        input { min-width: 0; }
+
+        /* Desktop/tablet: two-column Bento layout. */
+        @media (min-width: 768px) {
+            body > .w-full.max-w-6xl[class*="grid-cols-1"][class*="md:grid-cols-12"] {
+                grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+            }
+            .md\:col-span-4 { grid-column: span 4 / span 4; }
+            .md\:col-span-8 { grid-column: span 8 / span 8; }
+            .md\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+        }
+        @media (min-width: 640px) {
+            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .sm\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:w-auto { width: auto; }
+            .sm\:p-6 { padding: 1.5rem; }
+            .sm\:p-8 { padding: 2rem; }
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .lg\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+            .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+        }
+    </style>
+
+
+<style id="blue-theme-overrides">
+    /* تم اصلی آبی حرفه‌ای zavali20 */
+    :root {
+        --accent: #2563eb !important;
+        --accent-light: #dbeafe !important;
+        --accent-border: #93c5fd !important;
+        --accent-hover: #1d4ed8 !important;
+        --btn-primary-bg: #2563eb !important;
+        --btn-primary-hover: #1d4ed8 !important;
+    }
+
+    .dark {
+        --accent: #60a5fa !important;
+        --accent-light: rgba(37, 99, 235, 0.16) !important;
+        --accent-border: rgba(96, 165, 250, 0.34) !important;
+        --accent-hover: #3b82f6 !important;
+        --btn-primary-bg: #2563eb !important;
+        --btn-primary-hover: #1d4ed8 !important;
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #2563eb, #1d4ed8) !important;
+        color: #fff !important;
+    }
+
+    .btn-primary:hover {
+        background: linear-gradient(135deg, #3b82f6, #1e40af) !important;
+    }
+
+    .app-btn:hover {
+        border-color: #2563eb !important;
+        color: #1d4ed8 !important;
+    }
+
+    .text-indigo-500,
+    .text-indigo-600 {
+        color: #2563eb !important;
+    }
+
+    .bg-indigo-500 {
+        background-color: #2563eb !important;
+    }
+
+    .hover\:bg-indigo-600:hover {
+        background-color: #1d4ed8 !important;
+    }
+
+    .ring-indigo-500:focus,
+    .focus\:ring-indigo-500:focus {
+        --tw-ring-color: rgba(37, 99, 235, 0.35) !important;
+    }
+
+    .border-accent-border {
+        border-color: var(--accent-border) !important;
+    }
+
+    /* آبی برای عناصر تأکیدی */
+    [style*="background: rgba(99, 102, 241"],
+    [style*="background:rgba(99,102,241"] {
+        background: rgba(37, 99, 235, 0.15) !important;
+    }
+
+    [style*="color: #6366f1"],
+    [style*="color:#6366f1"] {
+        color: #2563eb !important;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #2563eb !important;
+    }
+
+    .glow-effect {
+        background: #2563eb;
+    }
+</style>
+
+
+<style id="irancell-inspired-theme">
+:root{--accent:#f4c400!important;--accent-light:#fff8cc!important;--accent-border:#f0d65a!important;--accent-hover:#d9aa00!important;--btn-primary-bg:#f4c400!important;--btn-primary-hover:#d9aa00!important;--text-primary:#17202a!important;--text-secondary:#68717c!important;--bg-primary:#f4f6f8!important;--bg-card:#ffffff!important;--bg-card-inner:#f8fafb!important;--border-card:#e5e9ee!important;--border-inner:#e8edf1!important;}
+.dark{--accent:#ffd83d!important;--accent-light:rgba(244,196,0,.14)!important;--accent-border:rgba(244,196,0,.35)!important;--accent-hover:#f4c400!important;--btn-primary-bg:#f4c400!important;--btn-primary-hover:#d9aa00!important;--bg-primary:#11161b!important;}
+body{background:linear-gradient(180deg,#f7f8fa 0%,#eef1f4 100%)!important;}
+.bento-card{border-radius:22px!important;box-shadow:0 8px 28px rgba(23,32,42,.07)!important;}
+.btn-primary{background:linear-gradient(135deg,#f7d21b,#e8b900)!important;color:#17202a!important;}
+.btn-primary:hover{background:linear-gradient(135deg,#ffe05a,#d9aa00)!important;}
+.btn-secondary{border-radius:12px!important;}
+.app-btn:hover{border-color:#f4c400!important;color:#a57d00!important;}
+.one-click-import-hint{margin:-6px 0 14px;padding:10px 14px;border:1px solid rgba(0,143,90,.18);background:linear-gradient(90deg,rgba(0,143,90,.06),rgba(37,99,235,.06));border-radius:12px;color:#166534!important;font-size:12px;font-weight:800;text-align:right;line-height:1.9;box-shadow:0 5px 18px rgba(15,23,42,.04);animation:zavaliHintPulse 2.8s ease-in-out infinite;}
+@keyframes zavaliHintPulse{0%,100%{transform:translateY(0);opacity:.92}50%{transform:translateY(-1px);opacity:1}}
+.glow-effect{background:#f4c400!important;opacity:.10!important;}
+#responsive-fallback{ }
+@media(min-width:768px){body{padding-top:24px!important;} body>.w-full.max-w-6xl{max-width:1180px!important;}}
+</style>
+
+
+
+
+
+
+
+<style id="app-logo-style">
+.app-logo{
+  width:42px!important;height:42px!important;min-width:42px;
+  display:inline-flex!important;align-items:center;justify-content:center;
+  border-radius:12px!important;overflow:hidden;
+  background:rgba(255,255,255,.10)!important;
+  border:1px solid rgba(255,255,255,.14)!important;
+  box-shadow:0 4px 12px rgba(0,0,0,.10);
+}
+.app-logo svg{width:30px;height:30px;display:block}
+.quick-app-logo{width:40px!important;height:40px!important;min-width:40px}
+.quick-app-logo svg{width:28px;height:28px}
+</style>
+
+
+<style id="hafez-verse-style">
+#hafez-verse{
+  display:block!important;
+  width:100%;
+  box-sizing:border-box;
+  margin:14px 0 2px;
+  padding:13px 16px;
+  text-align:center;
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(255,255,255,.72),rgba(248,249,252,.9));
+  border:1px solid rgba(99,102,241,.12);
+  box-shadow:0 8px 22px rgba(15,23,42,.07);
+  overflow:hidden;
+}
+#hafez-verse .hafez-verse-label{
+  display:block;
+  margin-bottom:4px;
+  font-size:11px;
+  font-weight:700;
+  opacity:.55;
+}
+#hafez-verse .hafez-verse-text{
+  display:block!important;
+  min-height:29px;
+  font-size:14px;
+  line-height:2;
+  font-weight:700;
+  opacity:1;
+  visibility:visible!important;
+  transform:translateY(0);
+  transition:opacity .65s ease,transform .65s ease;
+}
+#hafez-verse.hz-fade .hafez-verse-text{
+  opacity:0;
+  transform:translateY(6px);
+}
+@media(max-width:600px){
+  #hafez-verse{margin-top:12px;padding:11px 12px;border-radius:14px}
+  #hafez-verse .hafez-verse-text{font-size:13px;line-height:2}
+}
+</style>
+
+
+<style id="vip-user-style">
+.vip-user-wrap{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+.vip-badge{
+  display:inline-flex!important;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:3px 8px;
+  border-radius:999px;
+  font-size:10px;
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:.04em;
+  color:#7a4b00;
+  background:linear-gradient(135deg,#ffe08a,#f6b73c,#ffe9a8);
+  border:1px solid rgba(180,120,20,.35);
+  box-shadow:0 2px 8px rgba(180,120,20,.18),inset 0 1px 0 rgba(255,255,255,.65);
+  vertical-align:middle;
+}
+.vip-badge .vip-crown{font-size:12px;line-height:1}
+</style>
+
+
+<style id="service-message-green-style">
+.service-message-green{
+  color:#16a34a !important;
+}
+</style>
+
+
+<style id="zavali-luxury-vip">
+.zavali-profile-logo{
+  width:100%;
+  height:100%;
+  display:block;
+  border-radius:50%;
+  object-fit:cover;
+  filter:drop-shadow(0 8px 18px rgba(15,23,42,.22));
+}
+.user-profile-image + .zavali-profile-logo{display:block}
+
+.vip-user-wrap{
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  vertical-align:middle;
+}
+.vip-badge{
+  position:relative;
+  display:inline-flex !important;
+  align-items:center;
+  gap:5px;
+  padding:4px 10px 4px 8px;
+  min-height:28px;
+  border-radius:999px;
+  color:#3b2600 !important;
+  font-size:11px !important;
+  font-weight:900 !important;
+  letter-spacing:.4px;
+  background:linear-gradient(135deg,#fff4a8 0%,#f7d35b 30%,#c99520 62%,#fff0a0 100%);
+  border:1px solid rgba(255,255,255,.9);
+  box-shadow:0 3px 12px rgba(202,151,31,.38), inset 0 1px 0 rgba(255,255,255,.85);
+  text-shadow:0 1px 0 rgba(255,255,255,.35);
+  white-space:nowrap;
+  animation:zavaliVipGlow 2.6s ease-in-out infinite;
+}
+.vip-badge::before{
+  content:"";
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#fff8c9;
+  box-shadow:0 0 8px #fff;
+}
+.vip-badge::after{
+  content:"";
+  position:absolute;
+  inset:1px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.35);
+  pointer-events:none;
+}
+.vip-crown{
+  font-size:15px;
+  line-height:1;
+  filter:drop-shadow(0 1px 1px rgba(76,45,0,.3));
+}
+@keyframes zavaliVipGlow{
+  0%,100%{box-shadow:0 3px 12px rgba(202,151,31,.32), inset 0 1px 0 rgba(255,255,255,.85);}
+  50%{box-shadow:0 4px 20px rgba(246,201,76,.62), inset 0 1px 0 rgba(255,255,255,.95);}
+}
+</style>
+
+
+<style id="dynamic-cyber-profile-initial-style">
+.cyber-profile-logo{
+  width:170px !important;
+  height:170px !important;
+  position:relative !important;
+  flex:0 0 auto !important;
+}
+.cyber-profile-stage{
+  position:relative !important;
+  width:100% !important;
+  height:100% !important;
+  border-radius:50% !important;
+  overflow:hidden !important;
+}
+.dynamic-initial-overlay{
+  position:absolute !important;
+  left:50% !important;
+  top:50% !important;
+  transform:translate(-50%,-50%) !important;
+  width:58% !important;
+  height:58% !important;
+  border-radius:50% !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  background:radial-gradient(circle at 35% 25%,rgba(20,184,230,.98),rgba(8,24,55,.97) 58%,rgba(2,8,24,.99) 100%) !important;
+  border:2px solid rgba(0,220,255,.9) !important;
+  box-shadow:0 0 0 4px rgba(168,85,247,.25),0 0 24px rgba(0,195,255,.75),inset 0 0 24px rgba(124,58,237,.35) !important;
+  z-index:5 !important;
+  pointer-events:none !important;
+  animation:initialPulse 2.4s ease-in-out infinite !important;
+}
+.dynamic-initial-overlay::before{
+  content:"" !important;
+  position:absolute !important;
+  inset:8% !important;
+  border-radius:50% !important;
+  border:1px solid rgba(255,215,0,.75) !important;
+  box-shadow:0 0 12px rgba(255,215,0,.45) !important;
+}
+.dynamic-initial-overlay span{
+  position:relative !important;
+  z-index:2 !important;
+  font-family:Vazirmatn,Arial,sans-serif !important;
+  font-size:clamp(48px,11vw,78px) !important;
+  font-weight:950 !important;
+  line-height:1 !important;
+  color:#fff !important;
+  text-shadow:0 0 5px #fff,0 0 14px #00d9ff,0 0 30px #7c3aed,0 4px 12px rgba(0,0,0,.65) !important;
+  animation:initialLetterGlow 2.4s ease-in-out infinite !important;
+}
+@keyframes initialPulse{0%,100%{transform:translate(-50%,-50%) scale(1);filter:brightness(1)}50%{transform:translate(-50%,-50%) scale(1.035);filter:brightness(1.12)}}
+@keyframes initialLetterGlow{0%,100%{filter:brightness(1);transform:scale(1)}50%{filter:brightness(1.18);transform:scale(1.035)}}
+@media(max-width:420px){.cyber-profile-logo{width:150px !important;height:150px !important}.dynamic-initial-overlay span{font-size:56px !important}}
+</style>
+
+<style id="exclusive-panel-profile-style">
+.exclusive-panel-profile{
+  width:100%;
+  height:100%;
+  display:block;
+  border-radius:50%;
+  object-fit:cover;
+  filter:drop-shadow(0 8px 20px rgba(15,23,42,.24));
+}
+</style>
+
+
+<style id="zavali-vip-final">
+.vip-user-wrap{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  vertical-align:middle !important;
+}
+.vip-badge{
+  position:relative !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:5px !important;
+  height:30px !important;
+  padding:3px 11px 3px 8px !important;
+  border-radius:999px !important;
+  color:#382300 !important;
+  background:linear-gradient(135deg,#fff8c7 0%,#f7d76c 28%,#c58d20 62%,#fff1a2 100%) !important;
+  border:1px solid rgba(255,255,255,.95) !important;
+  box-shadow:0 4px 16px rgba(202,151,31,.42), inset 0 1px 0 #fff !important;
+  font-weight:950 !important;
+  font-size:11px !important;
+  letter-spacing:.6px !important;
+  white-space:nowrap !important;
+  text-shadow:0 1px rgba(255,255,255,.45) !important;
+  animation:zavaliVipLux 2.2s ease-in-out infinite !important;
+}
+.vip-crown{
+  display:inline-block !important;
+  font-size:16px !important;
+  line-height:1 !important;
+  color:#7a5410 !important;
+  filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)) !important;
+}
+.vip-badge::before{
+  content:"" !important;
+  width:6px !important;
+  height:6px !important;
+  border-radius:50% !important;
+  background:#fff !important;
+  box-shadow:0 0 9px #fff !important;
+}
+.vip-badge::after{
+  content:"" !important;
+  position:absolute !important;
+  inset:2px !important;
+  border-radius:999px !important;
+  border:1px solid rgba(255,255,255,.38) !important;
+  pointer-events:none !important;
+}
+@keyframes zavaliVipLux{
+  0%,100%{transform:translateY(0);filter:brightness(1);}
+  50%{transform:translateY(-1px);filter:brightness(1.09);}
+}
+.exclusive-panel-profile{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  border-radius:50% !important;
+  object-fit:cover !important;
+  filter:drop-shadow(0 9px 20px rgba(7,20,38,.28)) !important;
+}
+</style>
+
+</head>
+<body class="min-h-screen py-8 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-start fade-in relative overflow-x-hidden">
+    <!-- Ambient Background Glows -->
+    <div class="glow-effect top-0 left-10"></div>
+    <div class="glow-effect bottom-20 right-10" style="background: #34d399;"></div>
+
+    <!-- ZOVALI Management Panel Title -->
+    <div class="w-full max-w-6xl mb-5 z-10 relative text-center">
+        <h2 class="text-xl sm:text-2xl font-black tracking-tight" style="color: var(--accent);">
+            به پنل کاربری zavali20 خوش آمدید
+        </h2>
+        <p class="mt-2 text-sm sm:text-base text-secondary font-medium">
+            <span class="service-message-green">امیدواریم تجربه‌ای خوب و سریع از استفاده از خدمات ما داشته باشید.</span>
+        </p>
+    </div>
+
+    <!-- Theme & Language Toggle -->
+    <div class="w-full max-w-6xl flex justify-end items-center mb-6 z-10 relative">
+        <div class="flex gap-3">
+            <button onclick="toggleTheme()" id="theme-toggle" class="btn-secondary px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-sm" title="Toggle Theme">
+                <span id="theme-icon">☀️</span>
+                <span id="theme-label"></span>
+            </button>
+            <button onclick="toggleLang()" id="lang-toggle" class="btn-secondary px-4 py-2 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shadow-sm" title="Toggle Language">
+                <span id="lang-icon">🇺🇸</span>
+                <span id="lang-label">EN</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bento Grid Container -->
+    <div class="w-full max-w-6xl grid grid-cols-1 md:grid-cols-12 gap-6 z-10 relative">
+        
+        <!-- Left Sidebar / Profile (Col span 4) -->
+        <div class="md:col-span-4 flex flex-col gap-6">
+            <!-- Profile Card -->
+            <div class="bento-card p-6 flex flex-col items-center text-center relative overflow-hidden">
+                <div class="absolute top-0 w-full h-24" style="background: linear-gradient(135deg, var(--accent-light) 0%, transparent 100%); opacity: 0.5;"></div>
+                <div class="w-full flex flex-col items-center justify-center mb-5 z-10 relative" dir="rtl" lang="fa">
+                    <div class="user-initial-logo cyber-profile-logo" aria-label="عکس پروفایل کاربر">
+                        <div class="cyber-profile-stage dynamic-profile-stage" aria-label="پروفایل کاربر">
+                            <svg class="dynamic-profile-emblem" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="profileLogoTitle profileLogoDesc">
+                                <title id="profileLogoTitle">پروفایل کاربر</title>
+                                <desc id="profileLogoDesc">لوگوی نئونی اختصاصی با حرف اول و نام کامل کاربر</desc>
+                                <defs>
+                                    <radialGradient id="dpBg" cx="50%" cy="45%" r="65%"><stop offset="0" stop-color="#102c63"/><stop offset=".55" stop-color="#07142d"/><stop offset="1" stop-color="#020712"/></radialGradient>
+                                    <linearGradient id="dpNeon" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#00eaff"/><stop offset=".5" stop-color="#3d7cff"/><stop offset="1" stop-color="#ff27d8"/></linearGradient>
+                                    <linearGradient id="dpGold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5a8"/><stop offset=".35" stop-color="#ffd84d"/><stop offset=".7" stop-color="#d99b18"/><stop offset="1" stop-color="#fff0a0"/></linearGradient>
+                                    <linearGradient id="dpLetter" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#63f8ff"/><stop offset=".45" stop-color="#148bff"/><stop offset=".72" stop-color="#8c45ff"/><stop offset="1" stop-color="#ff39c8"/></linearGradient>
+                                    <filter id="dpGlow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+                                    <filter id="dpShadow"><feDropShadow dx="0" dy="8" stdDeviation="8" flood-opacity=".55"/></filter>
+                                </defs>
+                                <circle cx="200" cy="200" r="184" fill="url(#dpBg)" stroke="url(#dpNeon)" stroke-width="8" filter="url(#dpShadow)"/>
+                                <circle class="dp-ring" cx="200" cy="200" r="158" fill="none" stroke="#00eaff" stroke-width="3" stroke-dasharray="85 22 18 30" opacity=".85"/>
+                                <circle class="dp-ring dp-ring-2" cx="200" cy="200" r="145" fill="none" stroke="#b73cff" stroke-width="2" stroke-dasharray="35 18 75 25" opacity=".8"/>
+                                <path d="M57 217 C103 150 164 137 200 174 C237 213 297 203 343 145" fill="none" stroke="url(#dpNeon)" stroke-width="5" stroke-linecap="round" opacity=".9" filter="url(#dpGlow)"/>
+                                <path d="M52 249 C103 184 161 183 203 215 C245 247 301 239 347 180" fill="none" stroke="#19d9ff" stroke-width="2.5" opacity=".75"/>
+                                <!-- golden crown -->
+                                <path d="M116 105 L105 58 L145 83 L200 43 L255 83 L295 58 L284 105 Q200 133 116 105Z" fill="url(#dpGold)" stroke="#fff1a1" stroke-width="3" filter="url(#dpGlow)"/>
+                                <path d="M125 103 Q200 126 275 103 L266 120 Q200 141 134 120Z" fill="#b97913" stroke="#ffe98b" stroke-width="2"/>
+                                <circle cx="105" cy="58" r="7" fill="#fff4a5"/><circle cx="200" cy="43" r="8" fill="#fff4a5"/><circle cx="295" cy="58" r="7" fill="#fff4a5"/>
+                                <path d="M200 78 l10 14 -10 14 -10-14z" fill="#27cfff" stroke="#fff" stroke-width="2"/>
+                                <!-- dynamic initial -->
+                                <text id="dynamic-user-initial" x="200" y="218" text-anchor="middle" font-family="Arial, sans-serif" font-size="112" font-weight="900" fill="url(#dpLetter)" stroke="#9ffaff" stroke-width="2" paint-order="stroke" filter="url(#dpGlow)">؟</text>
+                                <path d="M126 249 Q200 270 274 249 L261 267 Q200 284 139 267Z" fill="#07182f" stroke="url(#dpNeon)" stroke-width="2"/>
+                                <!-- dynamic full user name; ZAVALI is intentionally absent -->
+                                <text id="dynamic-user-fullname" x="200" y="263" text-anchor="middle" font-family="Vazirmatn, Arial, sans-serif" font-size="22" font-weight="900" fill="#ffffff" letter-spacing=".3">کاربر</text>
+                                <g opacity=".9"><path d="M91 304h65" stroke="#00eaff" stroke-width="3"/><path d="M244 304h65" stroke="#00eaff" stroke-width="3"/><circle cx="200" cy="304" r="4" fill="#ffd84d"/></g>
+                                <text x="200" y="326" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="800" fill="#59efff" letter-spacing="2.2">FAST • SECURE • FREEDOM</text>
+                                <path d="M200 344 l12 12 -12 12 -12-12z" fill="#1ceaff" stroke="#fff" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <script id="dynamic-user-profile-logo-script">
+                    (function(){
+                      function updateProfileAlt(){
+                        const rawName = '__USER_NAME__';
+                        const name = rawName.replace(/\s+/g,' ').trim() || 'کاربر';
+                        const firstChar = Array.from(name)[0] || 'ک';
+                        const logo = document.querySelector('.dynamic-profile-emblem');
+                        const initial = document.getElementById('dynamic-user-initial');
+                        const fullName = document.getElementById('dynamic-user-fullname');
+                        if(logo){ logo.setAttribute('aria-label', 'پروفایل ' + name); }
+                        if(initial){ initial.textContent = firstChar.toLocaleUpperCase('fa-IR'); }
+                        if(fullName){
+                          fullName.textContent = name;
+                          const len = Array.from(name).length;
+                          fullName.setAttribute('font-size', len > 18 ? '13' : len > 14 ? '15' : len > 10 ? '18' : len > 7 ? '20' : '22');
+                        }
+                      }
+                      if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', updateProfileAlt); }
+                      else { updateProfileAlt(); }
+                    })();
+                    </script>
+                    <h1 id="user-name-fa" class="text-3xl sm:text-4xl font-black tracking-tight" style="font-family:Vazirmatn,sans-serif;text-align:center;word-break:break-word;display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.04em;direction:ltr;unicode-bidi:isolate;">
+<span class="vip-badge" title="VIP"><span class="vip-crown">♛</span> VIP</span>
+  <span class="user-name-letter" style="color:#f5d76e;text-shadow:0 1px 2px rgba(255,248,200,.9),0 3px 10px rgba(212,175,55,.38);">_</span>
+
+
+
+</h1>
+<script>
+(function(){
+  const el = document.getElementById('user-name-fa');
+  if (!el) return;
+  const name = '__USER_NAME__';
+  const colors = ['#FFD700','#00C2FF','#A855F7','#FF4D8D','#00D4A8','#FF9F1C','#4F7CFF','#E6C65C'];
+  el.innerHTML = '';
+  [...name].forEach((ch, i) => {
+    const s = document.createElement('span');
+    s.className = 'user-name-letter';
+    s.textContent = ch === ' ' ? '\u00A0' : ch;
+    s.style.color = colors[i % colors.length];
+    s.style.textShadow = '0 1px 2px rgba(255,255,255,.75), 0 3px 10px rgba(0,0,0,.18)';
+    s.style.display = 'inline-block';
+    s.style.transition = 'transform .2s ease, filter .2s ease';
+    s.onmouseenter = () => { s.style.transform='translateY(-2px)'; s.style.filter='brightness(1.15)'; };
+    s.onmouseleave = () => { s.style.transform=''; s.style.filter=''; };
+    el.appendChild(s);
+  });
+})();
+</script>
+                </div>
+                <p class="hidden" aria-hidden="true">__USER_ID__</p>
+                <div class="z-10 w-full">
+                    <span id="status-badge" class="px-6 py-2 rounded-xl text-xs font-bold shadow-sm inline-block w-full uppercase tracking-wider"></span>
+                </div>
+
+<div id="hafez-verse" class="hafez-verse" dir="rtl" aria-live="polite">
+  <div class="hafez-verse-label">✦ بیتی از حافظ ✦</div>
+  <div class="hafez-verse-text"></div>
+</div>
+
+            </div>
+
+            <!-- Expiry & General Info -->
+            <div class="bento-card p-6">
+                <h3 class="text-xs font-bold uppercase tracking-widest text-secondary mb-4 flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                    <span data-i18n="expDate">Expiration Date</span>
+                </h3>
+                <div class="flex flex-col gap-1">
+                    <span id="expiry-date" class="text-2xl font-black" style="color: var(--text-primary);">__EXPIRY_DATE__</span>
+                    <span id="expiry-date-gregorian" class="text-xs font-semibold mt-1 block" style="color: var(--text-secondary); direction:ltr;"></span>
+                    <p id="expiry-countdown" class="text-sm font-bold mt-1" style="color: #dc2626;" data-i18n="daysRemaining">در حال محاسبه...</p>
+                    <div class="mt-5 p-5 rounded-2xl relative overflow-hidden" style="background: linear-gradient(135deg, var(--bg-card-inner) 0%, var(--bg-card) 100%); border: 1px solid var(--border-inner);">
+                        <div class="absolute -left-8 -bottom-10 w-28 h-28 rounded-full opacity-10" style="background: var(--accent-color, #6366f1);"></div>
+                        <div class="flex items-start justify-between gap-4 mb-5 relative z-10">
+                            <div>
+                                <span class="text-[10px] font-black uppercase tracking-[0.18em] text-muted">Subscription Overview</span>
+                                <h4 class="text-sm font-black mt-1" style="color: var(--text-primary);">وضعیت اعتبار اشتراک</h4>
+                            </div>
+                            <div class="text-left shrink-0">
+                                <span id="expiry-progress-percent" class="text-2xl font-black" style="color:#dc2626;">—</span>
+                                <span class="block text-[9px] font-bold text-muted mt-0.5">اعتبار باقی‌مانده</span>
+                            </div>
+                        </div>
+                        <div class="relative z-10">
+                            <div class="flex items-center justify-between mb-2 text-[10px] font-bold">
+                                <span class="text-secondary">امروز</span>
+                                <span class="text-secondary">پایان اشتراک</span>
+                            </div>
+                            <div class="h-3 rounded-full overflow-hidden p-[2px]" style="background: var(--border-inner);">
+                                <div id="expiry-progress-bar" class="h-full rounded-full transition-all duration-700" style="width:0%; background:linear-gradient(90deg,#f87171,#dc2626); box-shadow:0 0 14px rgba(220,38,38,.25);"></div>
+                            </div>
+                            <div class="flex items-center justify-between mt-4">
+                                <div>
+                                    <span class="text-[9px] font-bold text-muted block">زمان باقی‌مانده</span>
+                                    <span id="expiry-days-number" class="text-lg font-black" style="color:#dc2626;">—</span>
+                                    <span class="text-[10px] font-bold text-muted"> روز</span>
+                                </div>
+                                <div class="text-left">
+                                    <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-[9px] font-black" style="background: var(--red-bg, #fef2f2); color:#dc2626;">
+                                        <span class="w-1.5 h-1.5 rounded-full" style="background:#dc2626;"></span>
+                                        وضعیت زمان‌بندی
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="mt-5 pt-5 border-t relative z-10" style="border-color: var(--border-inner);">
+                                <div class="flex items-center justify-between mb-3">
+                                    <span class="text-[10px] font-black uppercase tracking-[0.16em] text-muted">زمان دقیق تا پایان اشتراک</span>
+                                    <span id="expiry-live-status" class="text-[9px] font-black px-2 py-1 rounded-lg" style="background:var(--red-bg);color:var(--red-text);">فعال</span>
+                                </div>
+                                <div id="expiry-clock" class="grid grid-cols-4 gap-2" dir="ltr" aria-label="زمان باقی‌مانده تا پایان اشتراک">
+                                    <div class="bento-inner p-3 text-center"><div id="expiry-days-live" class="text-xl sm:text-2xl font-black tabular-nums" style="color:#dc2626;">00</div><div class="text-[9px] font-bold text-muted mt-1">روز</div></div>
+                                    <div class="bento-inner p-3 text-center"><div id="expiry-hours" class="text-xl sm:text-2xl font-black tabular-nums" style="color:#dc2626;">00</div><div class="text-[9px] font-bold text-muted mt-1">ساعت</div></div>
+                                    <div class="bento-inner p-3 text-center"><div id="expiry-minutes" class="text-xl sm:text-2xl font-black tabular-nums" style="color:#dc2626;">00</div><div class="text-[9px] font-bold text-muted mt-1">دقیقه</div></div>
+                                    <div class="bento-inner p-3 text-center"><div id="expiry-seconds" class="text-xl sm:text-2xl font-black tabular-nums" style="color:#dc2626;">00</div><div class="text-[9px] font-bold text-muted mt-1">ثانیه</div></div>
+                                </div>
+                                <div class="mt-3 h-1.5 rounded-full overflow-hidden" style="background:var(--progress-bg);"><div id="expiry-live-progress" class="h-full rounded-full transition-all duration-500" style="width:0%;background:linear-gradient(90deg,#f87171,#dc2626);"></div></div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-muted font-medium" data-i18n="calendarLocal">تقویم محلی</p>
+                    <div class="mt-5 pt-5 border-t" style="border-color: var(--border-inner);">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs font-bold text-secondary" data-i18n="allowedUsers">تعداد کاربران مجاز</span>
+                            <div class="text-right">
+                                <span class="text-lg font-black block" style="color: var(--text-primary);">۱ نفر</span>
+                                <span class="text-[10px] sm:text-xs font-medium text-muted block mt-1"><span style="color:#dc2626 !important; font-weight:900;">استفاده بیشتر از یک کاربر باعث قطع کانفیگ می‌شود</span>.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 pt-5 border-t" style="border-color: var(--border-inner);">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-xs font-bold text-secondary">Connection IP</span>
+                        <span class="text-xs font-mono font-semibold" style="color: var(--text-primary);" id="client-ip">Detecting...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Support / Help -->
+            <div class="bento-card p-6" style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--accent-light) 200%);">
+                <h3 class="text-sm font-bold flex items-center gap-2 mb-3" style="color: var(--text-primary);">
+                    <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    پشتیبانی و راهنما
+                </h3>
+                <p class="text-xs text-secondary mb-4 leading-relaxed">در اتصال مشکل دارید؟ وضعیت اتصال خود را بررسی کنید یا برای دریافت راهنمایی با پشتیبانی تماس بگیرید.</p>
+                <a href="https://t.me/zavali20" class="btn-primary w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.98 1.26-5.59 3.7-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.05-.49-.83-.27-1.49-.42-1.44-.88.03-.24.36-.48.98-.74 3.84-1.67 6.4-2.78 7.68-3.32 3.64-1.52 4.4-1.79 4.9-1.8.11 0 .36.03.49.14.11.09.14.22.15.34-.01.07-.01.16-.02.26z"/></svg>
+                    پشتیبانی در تلگرام
+                </a>
+                        <div class="h-2"></div>
+                        <a href="https://eitaa.com/zavali20" class="btn-primary w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.19-.08-.05-.19-.02-.27 0-.12.03-1.98 1.26-5.59 3.7-.53.36-1.01.54-1.44.53-.47-.01-1.38-.27-2.05-.49-.83-.27-1.49-.42-1.44-.88.03-.24.36-.48.98-.74 3.84-1.67 6.4-2.78 7.68-3.32 3.64-1.52 4.4-1.79 4.9-1.8.11 0 .36.03.49.14.11.09.14.22.15.34-.01.07-.01.16-.02.26z"/></svg>
+                    پشتیبانی در ایتا
+                </a>
+                <div class="h-2"></div>
+                <a href="https://wa.me/qr/AMCPWVG2RDTZH1" target="_blank" rel="noopener noreferrer" class="btn-primary w-full py-2.5 rounded-xl text-xs font-bold flex items-center justify-center gap-2 shadow-sm" style="background:linear-gradient(135deg,#25D366,#128C7E) !important;">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.82 11.82 0 0 0 12.08 0C5.56 0 .25 5.31.25 11.83c0 2.08.54 4.11 1.57 5.9L.16 24l6.42-1.68a11.86 11.86 0 0 0 5.5 1.35h.01c6.52 0 11.83-5.31 11.83-11.83 0-3.16-1.23-6.13-3.4-8.36zM12.09 21.7h-.01a9.83 9.83 0 0 1-5.01-1.37l-.36-.21-3.81 1 1.02-3.71-.23-.38a9.8 9.8 0 1 1 8.4 4.67zm5.38-7.36c-.29-.15-1.72-.85-1.99-.95-.27-.1-.46-.15-.66.15-.2.29-.76.95-.93 1.14-.17.2-.34.22-.63.07-.29-.15-1.21-.45-2.3-1.43-.85-.76-1.43-1.69-1.6-1.98-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.2-.29.29-.49.1-.2.05-.37-.02-.52-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.49-.66-.5h-.56c-.2 0-.51.07-.78.37-.27.29-1.02 1-1.02 2.44s1.05 2.83 1.2 3.02c.15.2 2.07 3.16 5.01 4.43.7.3 1.25.48 1.68.62.71.23 1.35.2 1.86.12.57-.08 1.72-.7 1.96-1.37.24-.68.24-1.25.17-1.37-.07-.12-.27-.2-.56-.34z"/></svg>
+                    پشتیبانی در واتس‌اپ
+                </a>
+            </div>
+        </div>
+
+        <!-- Right Main Content (Col span 8) -->
+        <div class="md:col-span-8 flex flex-col gap-6">
+            
+            <!-- Metrics Row -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <!-- Total Usage -->
+                <div class="bento-card p-6 relative overflow-hidden group">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-indigo-500 opacity-5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="flex justify-between items-start mb-4 relative z-10">
+                        <p class="text-xs font-bold uppercase tracking-widest text-secondary" data-i18n="totalUsage" style="color: var(--red-text, #dc2626);">Total Usage</p>
+                        <span class="p-2 rounded-lg" style="background: var(--bg-card-inner); border: 1px solid var(--border-inner);">
+                            <svg class="w-4 h-4 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
+                        </span>
+                    </div>
+                    <div class="flex items-baseline gap-1.5 mb-4 relative z-10">
+                        <span data-persian-number class="text-3xl font-black" style="color: var(--text-primary);">__TOTAL_GB__</span>
+                        <span data-persian-number class="text-sm font-medium text-secondary">/ __LIMIT_TOTAL_GB__ GB</span>
+                    </div>
+                    __TOTAL_PROGRESS__
+                </div>
+
+                <!-- Daily Usage -->
+                <div class="bento-card p-6 relative overflow-hidden group">
+                    <div class="absolute -right-6 -top-6 w-24 h-24 bg-emerald-500 opacity-5 rounded-full group-hover:scale-150 transition-transform duration-500"></div>
+                    <div class="flex justify-between items-start mb-4 relative z-10">
+                        <p class="text-xs font-bold uppercase tracking-widest text-secondary" data-i18n="dailyUsage" style="color: var(--red-text, #dc2626);">Daily Usage</p>
+                        <span class="p-2 rounded-lg" style="background: var(--bg-card-inner); border: 1px solid var(--border-inner);">
+                            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        </span>
+                    </div>
+                    <div class="flex items-baseline gap-1.5 mb-4 relative z-10">
+                        <span data-persian-number class="text-3xl font-black" style="color: var(--text-primary);">__DAILY_GB__</span>
+                        <span data-persian-number class="text-sm font-medium text-secondary">/ __LIMIT_DAILY_GB__ GB</span>
+                    </div>
+                    __DAILY_PROGRESS__
+                </div>
+            </div>
+
+                <div class="mt-8">
+                    <h4 class="text-xs font-bold uppercase tracking-widest mb-4 flex items-center gap-2" style="color:#008f5a !important;">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        <span data-i18n="oneClickImport">One-Click Import</span>
+                    </h4>
+                    <p class="one-click-import-hint" data-i18n="oneClickImportHint">روی برنامه‌ای که نصب دارید کلیک کنید تا کانفیگ وارد برنامه بشه</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <a id="v2rayng-link" href="v2rayng://install-sub?url=__SYNC_NORMAL__&name=__USER_NAME__" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>v2rayNG</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a href="v2rayn://install-sub?url=__SYNC_NORMAL__&name=__USER_NAME__" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>v2rayN</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a id="nekobox-link" href="nekobox://install-config?name=__USER_NAME__&type=SUBSCRIPTION&AUTOUPDATE=true&updatetime=1440&url=__SYNC_NORMAL__" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>NekoBox</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <button id="netmod-link" type="button" onclick="importNetMod()" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>NetMod</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5v14l11-7z"></path></svg>
+                        </button>
+                        <a id="karing-link" href="karing://install-config?url=__SYNC_NORMAL__&name=__USER_NAME__" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>Karing</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a href="streisand://import/__SYNC_NORMAL__" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>Streisand</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a id="happ-link" href="#" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>Happ</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a id="v2raytun-link" href="#" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>v2RayTun</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <a id="v2box-link" href="#" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>V2Box</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </a>
+                        <button id="npv-link" type="button" onclick="importNPV()" class="app-btn p-3 rounded-xl flex items-center justify-center gap-2 font-bold text-sm shadow-sm group hover:shadow-md" style="background:#008f5a !important; color:#fff !important; border-color:#007a4d !important;">
+                            <span>NPV Tunnel</span>
+                            <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 002 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                        </button>
+                    </div>
+                </div>
+
+            <!-- Universal Link Setup -->
+            <div class="bento-card p-6 sm:p-8">
+                <div class="flex justify-between items-end mb-6">
+                    <div>
+                        <h3 class="text-lg font-black flex items-center gap-2 mb-1" style="color: var(--text-primary);">
+                            <svg class="w-5 h-5 text-indigo-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+                            <span data-i18n="integrationTitle">Integration Connections</span>
+                        </h3>
+                        <p class="text-xs text-secondary" data-i18n="integrationDesc">Add your preferred configuration link.</p>
+                    </div>
+                </div>
+
+                <div class="bento-inner p-5 sm:p-6 border border-accent-border relative overflow-hidden" style="border-color: var(--accent-border);">
+                    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background: radial-gradient(circle at 100% 0%, var(--accent) 0%, transparent 40%);"><span class="app-logo quick-app-logo" aria-label="V2Box"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><path d="M9 12h5l6 15 6-15h5l-8.7 21h-4.6L9 12Z" fill="currentColor"/></svg></span></div>
+                    <div class="relative z-10">
+                        <h4 class="font-bold mb-2 flex items-center gap-2" style="color: var(--text-primary);">
+                            <span data-i18n="universalLink">Universal Auto-Detecting Link</span>
+                            <span class="px-2 py-0.5 rounded text-[9px] uppercase tracking-wider font-bold shadow-sm" style="background: var(--accent); color: white;">Recommended</span>
+                        </h4>
+                        <p class="text-xs text-secondary mb-4 leading-relaxed" data-i18n="universalDesc">This URL automatically detects your client and delivers the optimal format.</p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-3 w-full" dir="ltr">
+                            <input type="text" id="link-normal" value="__SYNC_NORMAL__" readonly class="input-field flex-1 px-4 py-3 rounded-xl text-sm font-mono w-full outline-none shadow-inner focus:ring-2 focus:ring-indigo-500 transition-shadow">
+                            <div class="flex gap-2">
+                                <button onclick="copyLink('link-normal')" class="btn-primary flex-1 sm:flex-none px-6 py-3 rounded-xl text-sm font-bold shrink-0 flex justify-center items-center gap-2 shadow-md">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                                    <span data-i18n="copy">Copy</span>
+                                </button>
+                                <button onclick="showQRModal('__SYNC_NORMAL__')" class="btn-secondary px-4 py-3 rounded-xl text-sm font-bold shrink-0 shadow-sm flex items-center justify-center">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6 bento-inner p-5 sm:p-6 border border-accent-border relative overflow-hidden" style="border-color: var(--accent-border);">
+                    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background: radial-gradient(circle at 100% 0%, var(--accent) 0%, transparent 40%);"></div>
+                    <div class="relative z-10 space-y-4">
+                        <h4 class="font-bold flex items-center gap-2" style="color: var(--text-primary);">
+                            <span data-i18n="availableFormats">Available Subscription Formats</span>
+                        </h4>
+                        <p class="text-xs text-secondary leading-relaxed" data-i18n="formatsDesc">Use these links to explicitly request specific configuration formats.</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <!-- Raw -->
+                            <div class="p-4 rounded-xl border border-accent-border space-y-2 bg-black/5 dark:bg-white/5" style="border-color: var(--accent-border);">
+                                <div class="flex justify-between items-center" dir="ltr">
+                                    <span class="text-xs font-bold text-left" dir="ltr" style="color: var(--text-primary);">Raw Configs (Text/URI)</span>
+                                    <span class="text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded" style="background: rgba(99, 102, 241, 0.15); color: #6366f1;">RAW</span>
+                                </div>
+                                <div class="flex gap-2" dir="ltr">
+                                    <input type="text" id="link-raw-fmt" readonly class="input-field flex-1 px-3 py-2 rounded-lg text-xs font-mono w-full outline-none" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--accent-border);">
+                                    <button onclick="copyLink('link-raw-fmt')" class="px-3 py-2 rounded-lg text-xs font-bold bg-indigo-500 text-white flex items-center gap-1 hover:bg-indigo-600 transition-colors">
+                                        <span data-i18n="copy">Copy</span>
+                                    </button>
+                                    <button onclick="showQRModal(document.getElementById('link-raw-fmt').value)" class="p-2 rounded-lg border border-accent-border hover:bg-white/10 flex items-center justify-center" style="border-color: var(--accent-border);">
+                                        <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Base64 -->
+                            <div class="p-4 rounded-xl border border-accent-border space-y-2 bg-black/5 dark:bg-white/5" style="border-color: var(--accent-border);">
+                                <div class="flex justify-between items-center" dir="ltr">
+                                    <span class="text-xs font-bold text-left" dir="ltr" style="color: var(--text-primary);">Base64 Sub (V2Ray / Shadowrocket)</span>
+                                    <span class="text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded" style="background: rgba(16, 185, 129, 0.15); color: #10b981;">BASE64</span>
+                                </div>
+                                <div class="flex gap-2" dir="ltr">
+                                    <input type="text" id="link-base64-fmt" readonly class="input-field flex-1 px-3 py-2 rounded-lg text-xs font-mono w-full outline-none" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--accent-border);">
+                                    <button onclick="copyLink('link-base64-fmt')" class="px-3 py-2 rounded-lg text-xs font-bold bg-emerald-500 text-white flex items-center gap-1 hover:bg-emerald-600 transition-colors">
+                                        <span data-i18n="copy">Copy</span>
+                                    </button>
+                                    <button onclick="showQRModal(document.getElementById('link-base64-fmt').value)" class="p-2 rounded-lg border border-accent-border hover:bg-white/10 flex items-center justify-center" style="border-color: var(--accent-border);">
+                                        <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Singbox -->
+                            <div class="p-4 rounded-xl border border-accent-border space-y-2 bg-black/5 dark:bg-white/5" style="border-color: var(--accent-border);">
+                                <div class="flex justify-between items-center" dir="ltr">
+                                    <span class="text-xs font-bold text-left" dir="ltr" style="color: var(--text-primary);">Sing-box Subscription (JSON)</span>
+                                    <span class="text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded" style="background: rgba(245, 158, 11, 0.15); color: #f59e0b;">SINGBOX</span>
+                                </div>
+                                <div class="flex gap-2" dir="ltr">
+                                    <input type="text" id="link-singbox-fmt" readonly class="input-field flex-1 px-3 py-2 rounded-lg text-xs font-mono w-full outline-none" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--accent-border);">
+                                    <button onclick="copyLink('link-singbox-fmt')" class="px-3 py-2 rounded-lg text-xs font-bold bg-amber-500 text-white flex items-center gap-1 hover:bg-amber-600 transition-colors">
+                                        <span data-i18n="copy">Copy</span>
+                                    </button>
+                                    <button onclick="showQRModal(document.getElementById('link-singbox-fmt').value)" class="p-2 rounded-lg border border-accent-border hover:bg-white/10 flex items-center justify-center" style="border-color: var(--accent-border);">
+                                        <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Clash -->
+                            <div class="p-4 rounded-xl border border-accent-border space-y-2 bg-black/5 dark:bg-white/5" style="border-color: var(--accent-border);">
+                                <div class="flex justify-between items-center" dir="ltr">
+                                    <span class="text-xs font-bold text-left" dir="ltr" style="color: var(--text-primary);">Clash Subscription (YAML)</span>
+                                    <span class="text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">CLASH</span>
+                                </div>
+                                <div class="flex gap-2" dir="ltr">
+                                    <input type="text" id="link-clash-fmt" readonly class="input-field flex-1 px-3 py-2 rounded-lg text-xs font-mono w-full outline-none" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--accent-border);">
+                                    <button onclick="copyLink('link-clash-fmt')" class="px-3 py-2 rounded-lg text-xs font-bold bg-violet-500 text-white flex items-center gap-1 hover:bg-violet-600 transition-colors">
+                                        <span data-i18n="copy">Copy</span>
+                                    </button>
+                                    <button onclick="showQRModal(document.getElementById('link-clash-fmt').value)" class="p-2 rounded-lg border border-accent-border hover:bg-white/10 flex items-center justify-center" style="border-color: var(--accent-border);">
+                                        <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- v2rayN JSON -->
+                            <div class="p-4 rounded-xl border border-accent-border space-y-2 bg-black/5 dark:bg-white/5" style="border-color: var(--accent-border);">
+                                <div class="flex justify-between items-center" dir="ltr">
+                                    <span class="text-xs font-bold text-left" dir="ltr" style="color: var(--text-primary);">v2rayN Subscription (JSON)</span>
+                                    <span class="text-[9px] uppercase tracking-wider font-bold px-1.5 py-0.5 rounded" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">V2RAYN</span>
+                                </div>
+                                <div class="flex gap-2" dir="ltr">
+                                    <input type="text" id="link-v2rayn-fmt" readonly class="input-field flex-1 px-3 py-2 rounded-lg text-xs font-mono w-full outline-none" style="background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--accent-border);">
+                                    <button onclick="copyLink('link-v2rayn-fmt')" class="px-3 py-2 rounded-lg text-xs font-bold bg-pink-500 text-white flex items-center gap-1 hover:bg-pink-600 transition-colors">
+                                        <span data-i18n="copy">Copy</span>
+                                    </button>
+                                    <button onclick="showQRModal(document.getElementById('link-v2rayn-fmt').value)" class="p-2 rounded-lg border border-accent-border hover:bg-white/10 flex items-center justify-center" style="border-color: var(--accent-border);">
+                                        <svg class="w-4 h-4 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm14 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- QR Modal -->
+    <div id="qr-modal" class="fixed inset-0 modal-overlay z-50 hidden items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="modal-card max-w-sm w-full rounded-3xl p-6 md:p-8 transform scale-95 transition-transform duration-300 shadow-2xl relative">
+            <button onclick="closeQRModal()" class="absolute top-4 right-4 p-2 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors">
+                <svg class="w-6 h-6 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h3 class="text-xl font-black mb-6 text-center" style="color: var(--text-primary);" id="qr-title">Scan QR Code</h3>
+            <div class="bg-white p-4 rounded-2xl shadow-inner mb-6 mx-auto w-fit">
+                <img id="qr-img" src="" alt="QR Code" class="w-48 h-48 sm:w-56 sm:h-56">
+            </div>
+            <p id="qr-text" class="text-xs text-center text-secondary font-mono break-all mb-6 px-2 bg-black/5 dark:bg-white/5 py-3 rounded-xl border border-inner"></p>
+            <button onclick="closeQRModal()" class="btn-primary w-full py-3 rounded-xl font-bold shadow-md" data-i18n="close">Close</button>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-10 left-1/2 -translate-x-1/2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-6 py-3 rounded-full shadow-2xl font-bold text-sm z-50 transition-all transform -translate-y-4 opacity-0 pointer-events-none flex items-center gap-2">
+        <svg class="w-5 h-5 text-emerald-400 dark:text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        <span>Notification</span>
+    </div>
+
+    <script>
+
+        const I18N = {
+            en: {
+                totalUsage: 'Total Usage',
+                dailyUsage: 'Daily Usage',
+                expDate: 'Expiration Date',
+                calendarLocal: 'Calendar Local',
+                unlimitedPlan: 'Unlimited Plan',
+                noDailyLimit: 'No Daily Limit',
+                integrationTitle: 'Integration Connections',
+                integrationDesc: 'Add the correct configuration link based on your preferred format below.',
+                universalLink: 'Universal Auto-Detecting Link',
+                universalDesc: 'This URL automatically detects your client and delivers the optimal format.',
+                oneClickImport: 'One-Click Import',
+                copy: 'Copy',
+                copyRaw: 'Copy Raw URL',
+                qr: 'QR',
+                parsedContent: 'Retrieve Raw Content',
+                close: 'Close',
+                qrTitle: 'Scan QR Code',
+                copied: 'Copied to clipboard!',
+                decodedCopied: 'Decoded links copied!',
+                decodedError: 'Error fetching content',
+                used: '% Used',
+                active: 'Active',
+                paused: 'Paused',
+                expired: 'Expired',
+                limitExceeded: 'Limit Exceeded',
+                dailyLimitExceeded: 'Daily Limit Exceeded',
+                availableFormats: 'Available Subscription Formats',
+                formatsDesc: 'Use these links to explicitly request specific configuration formats.',
+                 daysRemaining: 'days remaining',
+                 allowedUsers: 'Allowed Users',
+                 unlimitedUsers: 'Unlimited'
+            },
+            fa: {
+                totalUsage: 'مصرف کل',
+                dailyUsage: 'مصرف روزانه',
+                expDate: 'پایان اشتراک',
+                calendarLocal: 'زمان محلی',
+                unlimitedPlan: 'طرح نامحدود',
+                noDailyLimit: 'بدون محدودیت روزانه',
+                integrationTitle: 'لینک‌های اتصال',
+                integrationDesc: 'لینک پیکربندی مورد نظر خود را اضافه کنید.',
+                universalLink: 'لینک خودکار',
+                universalDesc: 'این لینک کلاینت شما را شناسایی و بهترین فرمت را ارسال می‌کند.',
+                oneClickImport: 'وارد کردن با یک کلیک',
+                oneClickImportHint: 'روی برنامه‌ای که نصب دارید کلیک کنید تا کانفیگ وارد برنامه بشه',
+                copy: 'کپی',
+                copyRaw: 'کپی لینک خام',
+                qr: 'QR',
+                parsedContent: 'دریافت متن خام',
+                close: 'بستن',
+                qrTitle: 'اسکن کد QR',
+                copied: 'کپی شد!',
+                decodedCopied: 'لینک‌ها کپی شد!',
+                decodedError: 'خطا در دریافت',
+                used: '% مصرف',
+                active: 'فعال',
+                paused: 'متوقف',
+                expired: 'منقضی',
+                limitExceeded: 'از حد مجاز رد شده',
+                dailyLimitExceeded: 'از حد روزانه رد شده',
+                availableFormats: 'فرمت‌های اشتراک در دسترس',
+                formatsDesc: 'از این لینک‌ها برای درخواست مستقیم فرمت‌های خاص پیکربندی استفاده کنید.',
+                 daysRemaining: 'روز باقی‌مانده',
+                 allowedUsers: 'تعداد کاربران مجاز',
+                 unlimitedUsers: 'نامحدود'
+            }
+        };
+
+        let currentLang = 'fa';
+        let isDark = false;
+
+        function applyTheme() {
+            const root = document.documentElement;
+            const themeLabel = document.getElementById('theme-label');
+            if (isDark) {
+                root.classList.add('dark');
+                document.getElementById('theme-icon').textContent = '☀️';
+                if (themeLabel) themeLabel.textContent = currentLang === 'fa' ? 'روشن' : 'Light';
+            } else {
+                root.classList.remove('dark');
+                document.getElementById('theme-icon').textContent = '🌙';
+                if (themeLabel) themeLabel.textContent = currentLang === 'fa' ? 'تاریک' : 'Dark';
+            }
+            try { localStorage.setItem('sub-theme', isDark ? 'dark' : 'light'); } catch(e) {}
+        }
+
+        function applyLang() {
+            const t = I18N[currentLang];
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.textContent = t[key];
+            });
+            if (currentLang === 'fa') {
+                document.documentElement.setAttribute('dir', 'rtl');
+                document.documentElement.setAttribute('lang', 'fa');
+                document.getElementById('lang-icon').textContent = '🇮🇷';
+                document.getElementById('lang-label').textContent = 'FA';
+            } else {
+                document.documentElement.setAttribute('dir', 'ltr');
+                document.documentElement.setAttribute('lang', 'en');
+                document.getElementById('lang-icon').textContent = '🇺🇸';
+                document.getElementById('lang-label').textContent = 'EN';
+            }
+            initStatusBadge();
+            try { localStorage.setItem('sub-lang', currentLang); } catch(e) {}
+        }
+
+        function toggleTheme() {
+            isDark = !isDark;
+            applyTheme();
+        }
+
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'fa' : 'en';
+            applyLang();
+            applyTheme();
+        }
+
+        // Persian (Jalali) expiry date and countdown
+        function toPersianDigits(value) {
+            return String(value).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+        }
+
+
+        function toPersianDigits(value) {
+            return String(value).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+        }
+
+        function localizeUsageNumbers() {
+            document.querySelectorAll('[data-persian-number]').forEach(el => {
+                if (!el.dataset.originalNumber) el.dataset.originalNumber = el.textContent.trim();
+                el.textContent = toPersianDigits(el.dataset.originalNumber);
+            });
+        }
+
+        function formatJalaliDate(date) {
+            try {
+                return new Intl.DateTimeFormat('fa-IR-u-ca-persian', {
+                    year: 'numeric', month: 'long', day: 'numeric'
+                }).format(date);
+            } catch (e) {
+                return date.toLocaleDateString('fa-IR');
+            }
+        }
+
+        function parseExpiryDate(raw) {
+            const text = String(raw).trim();
+            if (/^\d+$/.test(text)) {
+                const n = Number(text);
+                return new Date(n < 1e12 ? n * 1000 : n);
+            }
+            const d = new Date(text);
+            return isNaN(d.getTime()) ? null : d;
+        }
+
+        function updateExpiryInfo() {
+            const rawExpiry = '__EXPIRY_DATE__';
+            const rawStart = '__SUBSCRIPTION_START_DATE__';
+            const date = parseExpiryDate(rawExpiry);
+            const startDate = parseExpiryDate(rawStart);
+            const dateEl = document.getElementById('expiry-date');
+            const gregorianDateEl = document.getElementById('expiry-date-gregorian');
+            const countEl = document.getElementById('expiry-countdown');
+            if (!date || !dateEl || !countEl) return;
+
+            dateEl.textContent = currentLang === 'fa'
+                ? formatJalaliDate(date)
+                : date.toLocaleDateString('en-GB');
+
+            if (gregorianDateEl) {
+                gregorianDateEl.textContent = `میلادی: ${date.toLocaleDateString('en-GB', {
+                    day: '2-digit', month: 'long', year: 'numeric'
+                })}`;
+            }
+
+            const now = Date.now();
+            const expiryMs = date.getTime();
+            const diff = Math.max(0, expiryMs - now);
+
+            // For an exact percentage, the backend can replace __SUBSCRIPTION_START_DATE__
+            // with the real subscription start timestamp. If it is not supplied, use a
+            // 30-day reference window as a safe fallback.
+            const parsedStartMs = startDate && !isNaN(startDate.getTime()) ? startDate.getTime() : NaN;
+            const totalMs = Number.isFinite(parsedStartMs) && parsedStartMs < expiryMs
+                ? (expiryMs - parsedStartMs)
+                : (30 * 24 * 60 * 60 * 1000);
+
+            // Remaining-time percentage is updated every second and is shared by
+            // the main bar, circular ring, and live bar so they never disagree.
+            const remainingPercent = Math.max(0, Math.min(100, (diff / totalMs) * 100));
+            const percent = Math.round(remainingPercent * 100) / 100;
+
+            const progressBar = document.getElementById('expiry-progress-bar');
+            const progressPercent = document.getElementById('expiry-progress-percent');
+            const ring = document.getElementById('expiry-ring');
+            const dayNumber = document.getElementById('expiry-days-number');
+
+            if (progressBar) progressBar.style.width = percent + '%';
+            if (progressPercent) {
+                progressPercent.textContent = currentLang === 'fa'
+                    ? toPersianDigits(percent.toFixed(2)) + '%'
+                    : percent.toFixed(2) + '%';
+            }
+
+            if (ring) {
+                const circumference = 2 * Math.PI * 43;
+                ring.style.strokeDasharray = circumference;
+                ring.style.strokeDashoffset = circumference * (1 - remainingPercent / 100);
+            }
+
+            const totalSeconds = Math.floor(diff / 1000);
+            const d = Math.floor(totalSeconds / 86400);
+            const h = Math.floor((totalSeconds % 86400) / 3600);
+            const m = Math.floor((totalSeconds % 3600) / 60);
+            const sec = totalSeconds % 60;
+            const pad = n => String(n).padStart(2, '0');
+
+            const liveDays = document.getElementById('expiry-days-live');
+            const liveHours = document.getElementById('expiry-hours');
+            const liveMinutes = document.getElementById('expiry-minutes');
+            const liveSeconds = document.getElementById('expiry-seconds');
+            const liveStatus = document.getElementById('expiry-live-status');
+            const liveProgress = document.getElementById('expiry-live-progress');
+
+            if (liveDays) liveDays.textContent = pad(d);
+            if (liveHours) liveHours.textContent = pad(h);
+            if (liveMinutes) liveMinutes.textContent = pad(m);
+            if (liveSeconds) liveSeconds.textContent = pad(sec);
+
+            const shownDays = Math.floor(diff / 86400000);
+            if (dayNumber) {
+                dayNumber.textContent = currentLang === 'fa'
+                    ? toPersianDigits(shownDays)
+                    : shownDays;
+            }
+
+            if (diff > 0) {
+                if (liveStatus) {
+                    liveStatus.textContent = currentLang === 'fa' ? 'فعال' : 'ACTIVE';
+                    liveStatus.style.background = 'var(--green-bg)';
+                    liveStatus.style.color = 'var(--green-text)';
+                }
+                if (liveProgress) liveProgress.style.width = percent + '%';
+
+                if (currentLang === 'fa') {
+                    countEl.textContent = `${toPersianDigits(d)} روز، ${toPersianDigits(h)} ساعت، ${toPersianDigits(m)} دقیقه، ${toPersianDigits(sec)} ثانیه باقی‌مانده`;
+                } else {
+                    countEl.textContent = `${d} days, ${h} hours, ${m} minutes, ${sec} seconds remaining`;
+                }
+            } else {
+                if (liveStatus) {
+                    liveStatus.textContent = currentLang === 'fa' ? 'منقضی شده' : 'EXPIRED';
+                    liveStatus.style.background = 'var(--red-bg)';
+                    liveStatus.style.color = 'var(--red-text)';
+                }
+                if (liveProgress) liveProgress.style.width = '0%';
+
+                countEl.textContent = currentLang === 'fa'
+                    ? 'اشتراک منقضی شده است'
+                    : 'Subscription has expired';
+            }
+        }
+
+        function initStatusBadge() {
+            const badge = document.getElementById('status-badge');
+            const t = I18N[currentLang];
+            const map = {
+                active: { en: t.active || 'Active', bg: 'var(--green-bg)', border: 'var(--green-border)', color: 'var(--green-text)' },
+                paused: { en: t.paused || 'Paused', bg: 'var(--amber-bg)', border: 'var(--amber-border)', color: 'var(--amber-text)' },
+                expired: { en: t.expired || 'Expired', bg: 'var(--red-bg)', border: 'var(--red-border)', color: 'var(--red-text)' },
+                limit: { en: t.limitExceeded || 'Limit Exceeded', bg: 'var(--red-bg)', border: 'var(--red-border)', color: 'var(--red-text)' },
+                dailyLimit: { en: t.dailyLimitExceeded || 'Daily Limit Exceeded', bg: 'var(--red-bg)', border: 'var(--red-border)', color: 'var(--red-text)' }
+            };
+            const s = map['__STATUS_CODE__'] || map.active;
+            badge.textContent = s.en;
+            badge.style.background = s.bg;
+            badge.style.borderColor = s.border;
+            badge.style.color = s.color;
+            badge.style.border = '1px solid ' + s.border;
+        }
+
+        function copyLink(id) {
+            const el = document.getElementById(id);
+            el.select();
+            navigator.clipboard.writeText(el.value);
+            showToast(I18N[currentLang].copied);
+        }
+
+        async function fetchDecodedRawContent() {
+            try {
+                const res = await fetch('__SYNC_RAW__');
+                if(!res.ok) throw new Error('Failed');
+                const base64Str = await res.text();
+                const decodedText = atob(base64Str.trim());
+                await navigator.clipboard.writeText(decodedText);
+                showToast(I18N[currentLang].decodedCopied);
+            } catch(e) {
+                alert(I18N[currentLang].decodedError + ': ' + e.message);
+            }
+        }
+
+        function showQRModal(url) {
+            const t = I18N[currentLang];
+            document.getElementById('qr-title').innerText = t.qrTitle;
+            document.getElementById('qr-text').innerText = url;
+            document.getElementById('qr-img').src = 'https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=' + encodeURIComponent(url);
+            
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Animation
+            setTimeout(() => {
+                modal.style.opacity = '1';
+                modal.querySelector('.modal-card').style.transform = 'scale(1)';
+            }, 10);
+        }
+
+        function closeQRModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.style.opacity = '0';
+            modal.querySelector('.modal-card').style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('flex');
+            }, 300);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg;
+            t.style.opacity = '1';
+            t.style.transform = 'translate(-50%, 0)';
+            setTimeout(() => { 
+                t.style.opacity = '0'; 
+                t.style.transform = 'translate(-50%, 16px)';
+            }, 2500);
+        }
+
+        
+        // Fetch Client IP
+        fetch('https://api.ipify.org?format=json')
+            .then(r => r.json())
+            .then(data => {
+                let ipEl = document.getElementById('client-ip');
+                if(ipEl) ipEl.textContent = data.ip;
+            }).catch(e => {
+                let ipEl = document.getElementById('client-ip');
+                if(ipEl) ipEl.textContent = 'Unknown';
+            });
+
+        // آواتار فارسی زیبا: حرف اول و در صورت وجود، حرف اول آخرین بخش نام کاربر
+
+
+        (function init() {
+
+
+            applyTheme();
+            applyLang();
+
+            updateExpiryInfo();
+            localizeUsageNumbers();
+            setInterval(updateExpiryInfo, 1000);
+            
+            // Base64 encode normal link for shadowrocket
+            const normalLink = '__SYNC_NORMAL__';
+            document.querySelectorAll('a').forEach(a => {
+                if(a.href.includes('__SYNC_NORMAL_BASE64__')) {
+                    a.href = a.href.replace('__SYNC_NORMAL_BASE64__', btoa(normalLink));
+                }
+            });
+
+            // One-click import links for supported clients.
+            // Keep the subscription URL itself intact and URL-encode only where the
+            // target app expects it as a URI component. This avoids malformed deep
+            // links when the subscription URL contains its own query string.
+            const encodedNormalLink = encodeURIComponent(normalLink);
+            const encodedName = encodeURIComponent('__USER_NAME__');
+
+            function setAppLink(id, url) {
+                const el = document.getElementById(id);
+                if (el) el.href = url;
+            }
+
+            // v2rayNG accepts install-sub with the subscription URL as the url query
+            // parameter. Omitting the optional name avoids a known deep-link issue
+            // on some versions/devices.
+            setAppLink('v2rayng-link', 'v2rayng://install-sub?url=' + encodedNormalLink);
+
+            // v2rayN uses the same subscription deep-link form on supported builds.
+            const v2raynOneClick = document.querySelector('a[href^="v2rayn://"]');
+            if (v2raynOneClick) v2raynOneClick.href = 'v2rayn://install-sub?url=' + encodedNormalLink;
+
+            // NekoBox supports browser deeplinks for subscription groups.
+            const nekoboxLink = document.getElementById('nekobox-link');
+            if (nekoboxLink) nekoboxLink.href = 'sn://subscription?url=' + encodedNormalLink;
+
+            // These clients expect the subscription URL as the path/query value.
+            const happLink = document.getElementById('happ-link');
+            if (happLink) happLink.href = 'happ://add/' + normalLink;
+
+            const v2raytunLink = document.getElementById('v2raytun-link');
+            if (v2raytunLink) v2raytunLink.href = 'v2raytun://import/' + normalLink;
+
+            const v2boxLink = document.getElementById('v2box-link');
+            if (v2boxLink) v2boxLink.href = 'v2box://install-sub?url=' + encodedNormalLink + '&name=' + encodedName;
+
+            // Karing officially supports karing://install-config for one-click profile import.
+            const karingLink = document.getElementById('karing-link');
+            if (karingLink) {
+                karingLink.href = 'karing://install-config?url=' + encodedNormalLink + '&name=' + encodedName;
+            }
+
+            const streisandOneClick = document.querySelector('a[href^="streisand://"]');
+            if (streisandOneClick) streisandOneClick.href = 'streisand://import/' + encodedNormalLink;
+
+            // NPV Tunnel does not expose a documented public web deep-link in the
+            // current sources, so its button copies the subscription and opens NPV.
+            window.importNPV = async function () {
+                try {
+                    await navigator.clipboard.writeText(normalLink);
+                } catch (e) {
+                    const temp = document.createElement('textarea');
+                    temp.value = normalLink;
+                    document.body.appendChild(temp);
+                    temp.select();
+                    document.execCommand('copy');
+                    temp.remove();
+                }
+                showToast(currentLang === 'fa'
+                    ? 'لینک کپی شد؛ NPV Tunnel را باز کنید و Import from Clipboard را بزنید.'
+                    : 'Link copied. Open NPV Tunnel and choose Import from Clipboard.');
+                setTimeout(() => {
+                    try { window.location.href = 'npvtunnel://'; } catch (e) {}
+                }, 150);
+            };
+
+            // NetMod imports subscription data from the Android clipboard.
+            // This button copies the current subscription and launches NetMod.
+            window.importNetMod = async function () {
+                try {
+                    await navigator.clipboard.writeText(normalLink);
+                } catch (e) {
+                    const temp = document.createElement('textarea');
+                    temp.value = normalLink;
+                    temp.style.position = 'fixed';
+                    temp.style.opacity = '0';
+                    document.body.appendChild(temp);
+                    temp.select();
+                    try { document.execCommand('copy'); } catch (copyError) {}
+                    temp.remove();
+                }
+                showToast(currentLang === 'fa'
+                    ? 'لینک کپی شد؛ NetMod را باز کنید و Import from Clipboard را بزنید.'
+                    : 'Link copied. Open NetMod and choose Import from Clipboard.');
+                setTimeout(() => {
+                    window.location.href = 'intent://#Intent;package=com.netmod.syna;end';
+                }, 150);
+            };
+
+            // Set base64 flag for v2rayNG link
+            const v2rayngLink = document.getElementById('v2rayng-link');
+            if (v2rayngLink) {
+                const base64Url = normalLink + (normalLink.includes('?') ? '&flag=base64' : '?flag=base64');
+                v2rayngLink.href = 'v2rayng://install-sub?url=' + encodeURIComponent(base64Url) + '&name=' + encodeURIComponent('__USER_NAME__');
+            }
+
+            // Populate format-specific subscription links
+            const rawInput = document.getElementById('link-raw-fmt');
+            const base64Input = document.getElementById('link-base64-fmt');
+            const singboxInput = document.getElementById('link-singbox-fmt');
+            const clashInput = document.getElementById('link-clash-fmt');
+            const v2raynInput = document.getElementById('link-v2rayn-fmt');
+
+            if (rawInput) rawInput.value = normalLink + (normalLink.includes('?') ? '&flag=raw' : '?flag=raw');
+            if (base64Input) base64Input.value = normalLink + (normalLink.includes('?') ? '&flag=base64' : '?flag=base64');
+            if (singboxInput) singboxInput.value = normalLink + (normalLink.includes('?') ? '&flag=singbox' : '?flag=singbox');
+            if (clashInput) clashInput.value = normalLink + (normalLink.includes('?') ? '&flag=clash' : '?flag=clash');
+            if (v2raynInput) v2raynInput.value = normalLink + (normalLink.includes('?') ? '&flag=vjson' : '?flag=vjson');
+        })();
+    
+</script>
+
+    <style>
+        /* Professional app download section */
+        .apps-download-section {
+            width: min(1180px, calc(100% - 32px));
+            margin: 28px auto 24px;
+            position: relative;
+            z-index: 10;
+        }
+        .apps-download-shell {
+            background: linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,250,252,.98));
+            border: 1px solid rgba(15,23,42,.08);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 0 18px 55px rgba(15,23,42,.09);
+            overflow: hidden;
+            position: relative;
+        }
+        .apps-download-shell::before {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: rgba(37,99,235,.07);
+            top: -150px;
+            left: -100px;
+            pointer-events: none;
+        }
+        .apps-download-head {
+            position: relative;
+            text-align: center;
+            margin-bottom: 26px;
+        }
+        .apps-download-kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 7px 13px;
+            border-radius: 999px;
+            background: rgba(37,99,235,.09);
+            color: #2563eb;
+            font-size: 11px;
+            font-weight: 900;
+            margin-bottom: 11px;
+        }
+        .apps-download-title {
+            margin: 0;
+            font-size: clamp(22px, 3vw, 30px);
+            line-height: 1.35;
+            font-weight: 950;
+            color: #0f172a;
+        }
+        .apps-download-subtitle {
+            margin: 8px auto 0;
+            max-width: 680px;
+            color: #64748b;
+            font-size: 13px;
+            line-height: 1.9;
+            font-weight: 600;
+        }
+        .apps-platform-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0,1fr));
+            gap: 18px;
+            position: relative;
+        }
+        .platform-card {
+            border: 1px solid rgba(15,23,42,.08);
+            border-radius: 22px;
+            background: rgba(255,255,255,.9);
+            padding: 20px;
+            min-width: 0;
+        }
+        .platform-card-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+        .platform-title-wrap { display:flex; align-items:center; gap:11px; min-width:0; }
+        .platform-icon {
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            font-size: 20px;
+            font-weight: 900;
+            background: #eff6ff;
+            color: #2563eb;
+            border: 1px solid #dbeafe;
+        }
+        .platform-card h3 { margin:0; font-size:17px; font-weight:950; color:#0f172a; }
+        .platform-card p { margin:3px 0 0; color:#94a3b8; font-size:11px; font-weight:600; }
+        .platform-badge {
+            white-space: nowrap;
+            padding: 6px 9px;
+            border-radius: 999px;
+            background:#f8fafc;
+            border:1px solid #e2e8f0;
+            color:#64748b;
+            font-size:10px;
+            font-weight:800;
+        }
+        .app-list { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+        .app-download-item {
+            display:flex;
+            align-items:center;
+            justify-content:space-between;
+            gap:10px;
+            min-width:0;
+            padding:12px;
+            border:1px solid #e2e8f0;
+            border-radius:15px;
+            background:#fff;
+            text-decoration:none;
+            color:#0f172a;
+            transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+        }
+        .app-download-item:hover { transform:translateY(-2px); border-color:#bfdbfe; box-shadow:0 9px 24px rgba(15,23,42,.08); }
+        .app-info { display:flex; align-items:center; gap:10px; min-width:0; }
+        .app-logo {
+            width:38px; height:38px; flex:0 0 38px; border-radius:11px;
+            display:grid; place-items:center; background:#f1f5f9; color:#334155;
+            font-size:12px; font-weight:950; border:1px solid #e2e8f0;
+        }
+        .app-name { min-width:0; }
+        .app-name strong { display:block; font-size:12px; font-weight:900; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .app-name span { display:block; margin-top:2px; color:#94a3b8; font-size:9px; font-weight:700; }
+        .app-install {
+            flex:0 0 auto; padding:7px 10px; border-radius:9px;
+            background:#2563eb; color:#fff; font-size:9px; font-weight:900;
+        }
+        .apps-note {
+            margin-top:18px; padding:12px 14px; border-radius:14px;
+            background:#f8fafc; border:1px solid #e2e8f0; color:#64748b;
+            text-align:center; font-size:10px; font-weight:700; line-height:1.8;
+        }
+        @media (max-width: 760px) {
+            .apps-download-section { width:calc(100% - 20px); margin-top:20px; }
+            .apps-download-shell { padding:20px 14px; border-radius:22px; }
+            .apps-platform-grid { grid-template-columns:1fr; }
+        }
+        @media (max-width: 430px) {
+            .app-list { grid-template-columns:1fr; }
+            .platform-badge { display:none; }
+            .apps-download-title { font-size:21px; }
+        }
+    </style>
+
+    <!-- Professional Required Apps Download Section -->
+    <section class="apps-download-section" dir="rtl" lang="fa" aria-labelledby="apps-download-title">
+        <div class="apps-download-shell">
+            <div class="apps-download-head">
+                <div class="apps-download-kicker">⚡ نصب سریع و آسان</div>
+                <h2 id="apps-download-title" class="apps-download-title">دانلود و نصب برنامه های مورد نیاز</h2>
+                <p class="apps-download-subtitle">برنامه مناسب دستگاه خود را انتخاب کنید و از فروشگاه رسمی، آخرین نسخه برنامه را نصب نمایید.</p>
+            </div>
+
+            <div class="apps-platform-grid">
+                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-title-wrap">
+                            <div class="platform-icon">🤖</div>
+                            <div>
+                                <h3>برنامه‌های اندروید</h3>
+                                <p>Google Play Store</p>
+                            </div>
+                        </div>
+                        <span class="platform-badge">۵ برنامه</span>
+                    </div>
+                    <div class="app-list">
+                        <a href="https://play.google.com/store/apps/details?id=dev.hexasoftware.v2box" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo" aria-label="NetMod"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><circle cx="20" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 20h14M20 13v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span class="app-name"><strong>V2Box</strong><span>V2Ray Client</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.napsternetlabs.napsternetv" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo" aria-label="V2Box"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><path d="M9 12h5l6 15 6-15h5l-8.7 21h-4.6L9 12Z" fill="currentColor"/></svg></span><span class="app-name"><strong>NPV Tunnel</strong><span>VPN Client</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.happproxy" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo" aria-label="NPV Tunnel"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><path d="M10 10h5l10 12V10h5v20h-5L15 18v12h-5V10Z" fill="currentColor"/></svg></span><span class="app-name"><strong>Happ</strong><span>Proxy Utility</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.v2raytun.android" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo" aria-label="Happ"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><path d="M11 10h5v7h8v-7h5v20h-5v-8h-8v8h-5V10Z" fill="currentColor"/></svg></span><span class="app-name"><strong>V2RayTun</strong><span>V2Ray Client</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.netmod.syna" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo">NM</span><span class="app-name"><strong>NetMod</strong><span>VPN Client</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                    </div>
+                </div>
+
+                                <div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-title-wrap">
+                            <div class="platform-icon">🪟</div>
+                            <div>
+                                <h3>برنامه‌های ویندوز</h3>
+                                <p>Windows Desktop</p>
+                            </div>
+                        </div>
+                        <span class="platform-badge">۲ برنامه</span>
+                    </div>
+                    <div class="app-list">
+                        <a href="https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe" target="_blank" rel="noopener noreferrer" class="app-download-item" download>
+                            <span class="app-info"><span class="app-logo" aria-label="NetMod"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><circle cx="20" cy="20" r="10" fill="none" stroke="currentColor" stroke-width="3"/><path d="M13 20h14M20 13v14" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span class="app-name"><strong>Happ</strong><span>Windows x64</span></span></span><span class="app-install">دانلود</span>
+                        </a>
+                        <a href="https://s24.picofile.com/d/8455215226/84bcd248-23e5-494a-a249-26efeca9ad17/%D8%AF%D8%A7%D9%86%D9%84%D9%88%D8%A7%D8%AF_NetMod_x86_%D8%A2%D9%BE%D8%AF%DB%8C%D8%AA_%D8%B4%D8%AF_%D8%A8%D8%B1%D8%A7%DB%8C_%D9%88%DB%8C%D9%86%D8%AF%D9%88%D8%B2_%D8%A7%D8%AE%D8%AA%D8%B5%D8%A7%D8%B5%DB%8C_%D9%85%D8%B3%D8%AA%D8%B1%D8%B3%D8%A6%D9%88%DA%A9%D8%A7%D8%B1.exe" target="_blank" rel="noopener noreferrer" class="app-download-item" download>
+                            <span class="app-info"><span class="app-logo" aria-label="Happ"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="4" y="4" width="32" height="32" rx="9" fill="currentColor" opacity=".16"/><path d="M11 10h5v7h8v-7h5v20h-5v-8h-8v8h-5V10Z" fill="currentColor"/></svg></span><span class="app-name"><strong>NetMod</strong><span>Windows x86</span></span></span><span class="app-install">دانلود</span>
+                        </a>
+                    </div>
+                </div>
+
+<div class="platform-card">
+                    <div class="platform-card-head">
+                        <div class="platform-title-wrap">
+                            <div class="platform-icon"></div>
+                            <div>
+                                <h3>برنامه‌های آیفون</h3>
+                                <p>Apple App Store</p>
+                            </div>
+                        </div>
+                        <span class="platform-badge">۳ برنامه</span>
+                    </div>
+                    <div class="app-list">
+                        <a href="https://apps.apple.com/us/app/v2box-v2ray-client/id6446814690" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo">V2</span><span class="app-name"><strong>V2Box</strong><span>V2Ray Client</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/happ-proxy-utility/id6504287215" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo">HP</span><span class="app-name"><strong>Happ</strong><span>Proxy Utility</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                        <a href="https://apps.apple.com/us/app/npv-tunnel/id1629465476" target="_blank" rel="noopener noreferrer" class="app-download-item">
+                            <span class="app-info"><span class="app-logo">NV</span><span class="app-name"><strong>NPV Tunnel</strong><span>VPN Client</span></span></span><span class="app-install">نصب</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="apps-note">برای امنیت بیشتر، برنامه‌های موبایل از فروشگاه رسمی و نسخه‌های ویندوز از لینک‌های دانلود مشخص‌شده دریافت می‌شوند.</div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+<script id="hafez-verse-script">
+(function(){
+  var verses=[
+    "الا یا ایها الساقی ادر کاساً و ناولها",
+    "دوش دیدم که ملائک در میخانه زدند",
+    "سال‌ها دل طلب جام جم از ما می‌کرد",
+    "هرگز نمیرد آن که دلش زنده شد به عشق",
+    "در ازل پرتو حسنت ز تجلی دم زد",
+    "ما بدین در نه پی حشمت و جاه آمده‌ایم",
+    "نصیحتی کنمت بشنو و بهانه مگیر",
+    "ز کوی یار می‌آید نسیم باد نوروزی",
+    "خوشا شیراز و وضع بی‌مثالش",
+    "دوش وقت سحر از غصه نجاتم دادند",
+    "مزرع سبز فلک دیدم و داس مه نو",
+    "دلم جز مهر مهرویان طریقی برنمی‌گیرد"
+  ];
+
+  function showHafez(){
+    var box=document.getElementById("hafez-verse");
+    if(!box) return;
+    var text=box.querySelector(".hafez-verse-text");
+    if(!text) return;
+
+    text.textContent=verses[Math.floor(Math.random()*verses.length)];
+    text.style.opacity="0";
+    text.style.transform="translateY(6px)";
+
+    setTimeout(function(){
+      text.style.opacity="1";
+      text.style.transform="translateY(0)";
+    },100);
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",showHafez);
+  }else{
+    showHafez();
+  }
+})();
+</script>
+
+
+<script id="vip-user-script">
+(function(){
+  var badge=document.querySelector(".vip-badge");
+  if(!badge)return;
+  var parent=badge.parentElement;
+  if(parent && !parent.classList.contains("vip-user-wrap")){
+    parent.classList.add("vip-user-wrap");
+  }
+})();
+</script>
+
+
+
+
+
+<script id="zavali-vip-final-script">
+(function(){
+  function addVIP(){
+    const selectors = [
+      '#user-name','#username','.user-name','.username',
+      '[data-user-name]','[data-username]','.profile-name',
+      '.user-profile-name','.user-info .name','.profile-card .name'
+    ];
+    const seen = new Set();
+    selectors.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(el){
+        if(seen.has(el) || el.closest('.vip-user-wrap')) return;
+        seen.add(el);
+        const text = (el.textContent || '').trim();
+        if(!text) return;
+        const wrap = document.createElement('span');
+        wrap.className = 'vip-user-wrap';
+        el.parentNode.insertBefore(wrap, el);
+        wrap.appendChild(el);
+        const badge = document.createElement('span');
+        badge.className = 'vip-badge';
+        badge.innerHTML = '<span class="vip-crown">♛</span><span>VIP</span>';
+        wrap.appendChild(badge);
+      });
+    });
+  }
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', addVIP);
+  }else{
+    addVIP();
+  }
+  new MutationObserver(addVIP).observe(document.documentElement,{childList:true,subtree:true});
+})();
+</script>
+
+</body>
+</html>
