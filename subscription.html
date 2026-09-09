@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل کاربری ZOVALI</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-card: #1e293b;
+            --accent: #38bdf8;
+            --accent-light: rgba(56, 189, 248, 0.1);
+            --text-main: #f8fafc;
+            --text-secondary: #94a3b8;
+            --vip-gold: #f59e0b;
+        }
+
+        body {
+            font-family: Tahoma, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+            direction: rtl;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .panel-title {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .panel-title h2 {
+            font-size: 24px;
+            color: var(--accent);
+        }
+
+        .vip-user-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vip-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: #ffffff;
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4);
+        }
+
+        .bento-card {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .user-initial-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- ZOVALI Management Panel Title -->
+        <div class="panel-title">
+            <h2>
+                به پنل کاربری 
+                <span class="vip-user-wrap">
+                    zavali20
+                    <span class="vip-badge">
+                        <span>👑</span> VIP
+                    </span>
+                </span>
+                خوش آمدید
+            </h2>
+            <p style="color: var(--text-secondary);">
+                امیدواریم تجربه‌ای خوب و سریع از استفاده از خدمات ما داشته باشید.
+            </p>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="bento-card">
+            <div class="vip-badge">
+                <span>👑</span> کاربر VIP
+            </div>
+            
+            <div class="user-initial-logo">
+                Z
+            </div>
+
+            <h3 style="margin: 10px 0 5px 0;">zavali20</h3>
+            <p style="color: var(--text-secondary); margin: 0;">اشتراک فعال: VIP یکساله</p>
+        </div>
+    </div>
+
+</body>
+</html>
